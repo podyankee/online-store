@@ -9,7 +9,8 @@
 						v-list-tile-title(v-text="link.title")
 		v-toolbar(app, dark, color="primary")
 			v-toolbar-side-icon.hidden-md-and-up(@click="sideNav = !sideNav")
-			v-toolbar-title Online Store
+			v-toolbar-title
+				router-link(to="/" tag="span" class="pointer") Online Store
 			v-spacer
 			v-toolbar-items.hidden-sm-and-down
 				v-btn(flat='',v-for="(link, i) in links", :key="i", :to="link.url")
@@ -37,4 +38,6 @@ export default {
 </script>
 
 <style lang = "sass" scoped>
+	.pointer
+		cursor: pointer
 </style>
