@@ -50,9 +50,10 @@ export default {
 					material: this.material,
 					price: this.price,
 					description: this.description,
-					promo: this.promo
+					promo: this.promo,
+					imageSrc: 'https://image.ibb.co/fZzq1o/Lenovo_Legion_Y520.jpg'
 				}
-				console.log(product);
+				this.$store.dispatch('createProduct', product)
 			}
 		}
 	},

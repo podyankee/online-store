@@ -36,8 +36,18 @@ export default {
 			}
 		]
 	},
-	mutations: {},
-	actions: {},
+	mutations: {
+		createProduct (state, payload) {
+			state.products.push(payload);
+		}
+	},
+	actions: {
+		createProduct ({commit}, payload) {
+			payload.id = 'qwertyu';
+
+			commit('createProduct', payload)
+		}
+	},
 	getters: {
 		products (state) {
 			return state.products;
