@@ -9,11 +9,13 @@ import 'vuetify/dist/vuetify.min.css';
 
 window.Vue = require('vue') ;
 import router from './router';
+import store from './store';
 import Vuetify from 'vuetify';
 Vue.use(Vuetify);
 new Vue({
 	el: '#app',
 	router,
+	store,
 	components: { App },
 	template: '<App/>'
 });

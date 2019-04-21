@@ -4,7 +4,7 @@
 			v-layout(row)
 				v-flex(xs12)
 					v-carousel(delimiter-icon='stop' prev-icon='mdi-arrow-left' next-icon='mdi-arrow-right')
-						v-carousel-item(v-for="product, i in products", :key="i", :src="product.imageSrc")
+						v-carousel-item(v-for="product, i in promoProducts", :key="i", :src="product.imageSrc")
 		v-container(grid-list-lg="")
 			v-layout(row, wrap)
 				v-flex(xs12, sm6,md4, v-for="product, i in products", :key="i")
@@ -26,43 +26,12 @@
 
 <script>
 export default {
-	data () {
-		return {
-			products: [
-				{
-					id: '1',
-					title: 'Lenovo Legion Y520',
-					vendor: 'Lenovo',
-					color: 'black',
-					material: 'metal/plastic',
-					description: 'Intel Core i5 7300HQ 2500 MHz/15.6"/1920x1080/8Gb/1000Gb HDD/DVD ���/NVIDIA GeForce GTX 1050, 4096 ��/Wi-Fi/Bluetooth/Win 10 Home',
-					price: 760,
-					promo: false,
-					imageSrc: 'https://image.ibb.co/fZzq1o/Lenovo_Legion_Y520.jpg'
-				},
-				{
-					id: '2',
-					title: 'Asus FX503VD',
-					vendor: 'Asus',
-					color: 'white',
-					material: 'plastic',
-					description: 'Intel Core i5 7300HQ 2500 MHz/15.6"/1920x1080/8Gb/256Gb SSD/DVD ���/NVIDIA GeForce GTX 1050/Wi-Fi/Bluetooth/Windows 10 Home',
-					price: 984,
-					promo: true,
-					imageSrc: 'https://image.ibb.co/cpScgo/ASUS_FX503_VD.jpg'
-				},
-				{
-					id: '3',
-					title: 'ASUS TUF Gaming FX504GD',
-					vendor: 'Asus',
-					color: 'black',
-					material: 'metal/plastic',
-					description: 'Intel Core i7 8750H 2300 MHz/15.6"/1920x1080/12Gb/1000Gb HDD/DVD ���/NVIDIA GeForce GTX 1050, 4096 ��/Wi-Fi/Bluetooth/Win 10 Home',
-					price: 1220,
-					promo: true,
-					imageSrc: 'https://image.ibb.co/jBZOMo/ASUS_TUF_Gaming_FX504_GD.jpg'
-				}
-			]
+	computed: {
+		promoProducts () {
+			return this.$store.getters.promoProducts
+		},
+		products () {
+			return this.$store.getters.products
 		}
 	}
 }

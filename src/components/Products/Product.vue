@@ -3,33 +3,37 @@
 		section.product.mt-3.elevation-10
 			v-layout(row wrap)
 				v-flex(xs-12 lg-6)
-					img.product_img(src="https://image.ibb.co/fZzq1o/Lenovo_Legion_Y520.jpg")
+					img.product_img(:src="product.imageSrc")
 				v-flex(xs-12 lg-6)
 					.product_info
-						h5.product_title.display-1.mb-3.mt-3 Заголовок продукта
+						h5.product_title.display-1.mb-3.mt-3 {{ product.title}}
 						p.product_category.title
-							span.product_title Vendor:
+							span.product_title {{ product.vendor.charAt(0).toUpperCase() + product.vendor.substr(1) }}:
 							|  Lorem
 						p.product_price.title
 							span.product_title Price:
-							|  $ 1000
+							|  $ {{ product.price }}
 						p.product_color.title
 							span.product_title Color:
-							span.product_color__bg(:title="purple" :style="{ backgroundColor:'purple' }")
+							span.product_color__bg(:title="product.color" :style="{ backgroundColor: product.color }")
 						p.title
 							span.product_title Material:
-							|  Lorem
+							|  {{ product.material.charAt(0).toUpperCase() + product.material.substr(1) }}
 						.title.mb-5
 							p.product_title.mb-2 Description:
-							|  lorem loremFor weary at my it by lenore
+							|  {{ product.description }}
 						v-btn.headline(color="primary") Edit
 						v-btn.headline(color="primary") Buy
 </template>
 
 <script>
 export default {
-	data () {
-		return {}
+	props: ['id'],
+	computed: {
+		product () {
+			const id = this.id;
+			return this.$store.getters.productById(id);
+		}
 	}
 }
 </script>

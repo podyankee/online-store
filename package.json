@@ -14,8 +14,8 @@
     "last 3 version"
   ],
   "author": "Kostyantin",
-	"license": "MIT",
-	"homepage": "https://github.com/podyankee/online-store.git",
+  "license": "MIT",
+  "homepage": "https://github.com/podyankee/online-store.git",
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
@@ -44,7 +44,6 @@
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
-    "vuex": "^3.1.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
@@ -54,6 +53,7 @@
     "material-design-icons-iconfont": "^4.0.5",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
-    "vuetify": "^1.5.11"
+    "vuetify": "^1.5.11",
+    "vuex": "^3.1.0"
   }
 }
