@@ -11,7 +11,7 @@
 							v-text-field(prepend-icon='lock' name='password' aria-label='Password' type='password' :rules="passwordRules" v-model='password' :counter="6")
 					v-card-actions
 						v-spacer
-						v-btn(color='primary' @click='onSubmit' :disabled="!valid") Login
+						v-btn(color='primary' @click='onSubmit' :loading="loading" :disabled="!valid || loading") Login
 </template>
 
 <script>
@@ -31,6 +31,11 @@ export default {
 			]
 		}
 	},
+	computed: {
+		loading () {
+			return this.$store.getters.loading
+		}
+	},
 	methods: {
 		onSubmit () {
 			if (this.$refs.form.validate()) {
@@ -38,7 +43,11 @@ export default {
 					email: this.email,
 					password: this.password
 				}
-				console.log(user)
+				this.$store.dispatch('loginUser',user)
+				.then(() => {
+					this.$router.push('/')
+				})
+				.catch(err => console.log(err))
 			}
 		}
 	}

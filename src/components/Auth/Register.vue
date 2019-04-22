@@ -12,7 +12,7 @@
 							v-text-field(prepend-icon='repeat' name='confirm-password' aria-label='Confirm Password' type='password' :rules="confirmPasswordRules" v-model='confipmPassword' :counter="6")
 					v-card-actions
 						v-spacer
-						v-btn(color='primary' @click='onSubmit' :disabled="!valid") Create  Account
+						v-btn(color='primary' @click='onSubmit' :loading="loading" :disabled="!valid || loading") Create  Account
 </template>
 
 <script>
@@ -37,6 +37,11 @@ export default {
 			]
 		}
 	},
+	computed: {
+		loading () {
+			return this.$store.getters.loading
+		}
+	},
 	methods: {
 		onSubmit () {
 			if (this.$refs.form.validate()) {
@@ -44,7 +49,11 @@ export default {
 					email: this.email,
 					password: this.password
 				}
-				console.log(user)
+				this.$store.dispatch('registerUser', user)
+				.then(() => {
+					this.$router.push('/')
+				})
+				.catch(err => console.log(err))
 			}
 		}
 	}
