@@ -29,7 +29,13 @@ new Vue({
 				projectId: 'onlinestore-d808c',
 				storageBucket: 'onlinestore-d808c.appspot.com',
 				messagingSenderId: '725772619209'
-			}
+			};
 			fb.initializeApp(config);
+
+			fb.auth().onAuthStateChanged(user => {
+				if (user) {
+					this.$store.dispatch('autoLoginUser', user);
+				}
+			});
 	}
 });
